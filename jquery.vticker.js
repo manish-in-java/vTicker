@@ -16,6 +16,7 @@
  * pause          : jQuery selector for a DOM element that can be clicked to pause (ongoing) scrolling
  * resume         : jQuery selector for a DOM element that can be clicked to resume (paused) scrolling
  * direction      : direction of scroll. Values are 'up' and 'down'. (default 'up')
+ * isPaused       : whether the animation is paused when the plugin first loads (default false)
  * debug          : whether debugging messages should be printed (default false)
  * onChange       : callback function to call when a new item is scrolled into view
  * onPause        : callback function to call when the animation is paused
@@ -44,8 +45,8 @@
 
         var options = $.extend(defaults, options);
 
-        moveUp = function(obj2, height, options) {
-            if (options.isPaused)
+        moveUp = function(obj2, height, options, force) {
+            if (options.isPaused && !force)
                 return;
 
             if (options.debug) {
@@ -81,8 +82,8 @@
             }
         };
 
-        moveDown = function(obj2, height, options) {
-            if (options.isPaused)
+        moveDown = function(obj2, height, options, force) {
+            if (options.isPaused && !force)
                 return;
 
             if (options.debug) {
@@ -153,9 +154,9 @@
             if (typeof (options.next) != "undefined" && options.next != null) {
                 $(options.next).click(function() {
                     if (options.direction == 'up') {
-                        moveUp(obj, maxHeight, options);
+                        moveUp(obj, maxHeight, options, true);
                     } else {
-                        moveDown(obj, maxHeight, options);
+                        moveDown(obj, maxHeight, options, true);
                     }
                 });
             }
@@ -164,9 +165,9 @@
             if (typeof (options.previous) != "undefined" && options.previous != null) {
                 $(options.previous).click(function() {
                     if (options.direction == 'up') {
-                        moveDown(obj, maxHeight, options);
+                        moveDown(obj, maxHeight, options, true);
                     } else {
-                        moveUp(obj, maxHeight, options);
+                        moveUp(obj, maxHeight, options, true);
                     }
                 });
             }
@@ -203,9 +204,9 @@
 
             var interval = setInterval(function() {
                 if (options.direction == 'up') {
-                    moveUp(obj, maxHeight, options);
+                    moveUp(obj, maxHeight, options, false);
                 } else {
-                    moveDown(obj, maxHeight, options);
+                    moveDown(obj, maxHeight, options, false);
                 }
             }, options.interval);
 
