@@ -43,11 +43,17 @@
             onResume : null
         };
 
-        var options = $.extend(defaults, options);
+        var options = $.extend(defaults, options, {
+            isAnimating : false
+        });
 
         moveUp = function(obj2, height, options, force) {
-            if (options.isPaused && !force)
+            if ((options.isPaused && !force) || options.isAnimating) {
                 return;
+            }
+
+            // Set a flag to indicate that the animation is in progress.
+            options.isAnimating = true;
 
             if (options.debug) {
                 console.log("jquery.vTicker.moveUp called.");
@@ -80,11 +86,18 @@
             if (typeof (options.onChange) === "function") {
                 options.onChange(obj);
             }
+
+            // Unset the flag to indicate that the animation has finished.
+            options.isAnimating = false;
         };
 
         moveDown = function(obj2, height, options, force) {
-            if (options.isPaused && !force)
+            if ((options.isPaused && !force) || options.isAnimating) {
                 return;
+            }
+
+            // Set a flag to indicate that the animation is in progress.
+            options.isAnimating = true;
 
             if (options.debug) {
                 console.log("jquery.vTicker.moveDown called.");
@@ -116,6 +129,9 @@
             if (typeof (options.onChange) === "function") {
                 options.onChange(obj);
             }
+
+            // Unset the flag to indicate that the animation has finished.
+            options.isAnimating = false;
         };
 
         return this.each(function() {
