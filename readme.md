@@ -15,7 +15,7 @@ jQuery version 1.2 or higher.  Tested up to jQuery version 1.7.1.
 # Options
 ---------
 
-The plugin supports the following options (shown with their default values):
+This plugin supports the following options (shown with their default values):
 
     var defaults = {
         speed : 700,
@@ -105,16 +105,16 @@ A full example is shown below:
 
 It is possible to manually scroll the ticker forward or backward.  It is also possible to pause the ticker and resume a paused ticker.
 
-Any DOM element can be used to manually control the ticker.  For each of the manual operations to be supported, a jQuery DOM element selector must be passed to the plugin when initializing it.  For example:
+Any DOM element can be used to control the ticker manually.  For each of the manual operations to be supported, a jQuery DOM element selector must be passed to the plugin when initializing it.  For example:
 
 
     jQuery("#ticker").vTicker({ next : "#next" });
 
-signifies that the DOM element with the id `next` can be used to manually scroll the ticker in the forward direction.  Similarly,
+signifies that the DOM element with the id `next` be used to manually scroll the ticker in the forward direction.  Similarly,
 
     jQuery("#ticker").vTicker({ next : "#next", previous : "#previous", pause : "#pause", resume : "#resume" });
 
-signifies that the DOM elements with ids `next`, `previous`, `pause` and `resume` will be used to manually scroll the ticker forward, scroll it backward, pause the ticker and resume the ticker, respectively.
+signifies that the DOM elements with ids `next`, `previous`, `pause` and `resume` be used to manually scroll the ticker forward, scroll it backward, pause the ticker and resume the ticker, respectively.
 
 A full example is shown below:
 
@@ -174,9 +174,9 @@ A full example is shown below:
 
 The plugin also notifies of any changes to its state.  The following initialization options are supported to configure callback functions:
 
- * **onChange** - callback function to call when a new item is scrolled into view
- * **onPause** - callback function to call when the animation is paused
- * **onResume** - callback function to call when the animation resumes
+ * **onChange** - function to call after a new item has finished scrolling into view
+ * **onPause** - function to call when the animation is paused
+ * **onResume** - function to call when the animation resumes
 
 For example,
 
