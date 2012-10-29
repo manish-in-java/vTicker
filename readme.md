@@ -3,6 +3,8 @@
 
 This is a modification to the original jQuery vertical news ticker implemented by JugBit.  For the original plugin and licensing details, please refer to the original author's website at http://www.jugbit.com/jquery-vticker-vertical-news-ticker/.
 
+Compared to the original plugin, this version allows the ticker animation to be controlled manually.  Users can navigate backward and forward and pause-resume the ticker animation.
+
 If you like this project and use it for any of your applications, please consider supporting the original author by making a donation from their website.
 
 
