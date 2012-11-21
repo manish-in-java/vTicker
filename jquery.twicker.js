@@ -91,7 +91,7 @@
             var ticker = obj.children("ul");
             for (index in tweets) {
                 ticker.append("<li>" + tweets[index].text.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, "<a href='$1'>$1</a>")
-                        + "</tweet>");
+                        + "</li>");
             }
 
             obj.vTicker(options);
